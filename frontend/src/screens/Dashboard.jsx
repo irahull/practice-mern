@@ -11,6 +11,7 @@ import axios from "axios";
 const Dashboard = () => {
   const [toggleAddPlot, setToggaleAddPlot] = useState(false);
   const [allData, setAllData] = useState([]);
+  const [editId, setEditId] = useState();
   const data = [
     {
       id: 1,
@@ -47,7 +48,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     getAllData();
-  }, [allData]);
+  }, []);
+
+  console.log(editId);
 
   return (
     <div className="dashboard-container">
@@ -99,12 +102,12 @@ const Dashboard = () => {
                       backgroundColor:
                         item.availability === "pending"
                           ? "#FCBE2D"
-                          : item.availability=== "sold"
+                          : item.availability === "sold"
                           ? "#FD5454"
                           : "",
                     }}
                   >
-                   {item.availability}
+                    {item.availability}
                   </button>
                 </div>
                 <div className="data-activity">
@@ -118,7 +121,7 @@ const Dashboard = () => {
                   </div>
                   <div className="a-copy">
                     <LuClipboardCopy />
-                    <span>Copy</span>
+                    <span onClick={() => setEditId(item._id)}>Update</span>
                   </div>
                   <div className="a-download">
                     <MdOutlineFileDownload />
