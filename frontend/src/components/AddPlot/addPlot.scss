@@ -1,0 +1,207 @@
+.addPlot-main {
+  width: 85%;
+  height: 88%;
+  background-color: white;
+  font-family: "Inter", sans-serif;
+  padding: 1vw;
+  border-radius: 1vw;
+  .ap-upper-section {
+    width: 100%;
+    height: 12%;
+    // border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .plot-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4vw;
+      width: 14vw;
+      height: 100%;
+      // border: 1px solid red;
+      justify-content: center;
+      background-color: #b0dedd;
+      border-top-left-radius: 2vw;
+      border-bottom-right-radius: 2vw;
+      img {
+        border-top-left-radius: 2vw;
+        width: 20%;
+      }
+      h4 {
+        font-size: 2vw;
+      }
+    }
+    .ap-close {
+      width: 3vw;
+      cursor: pointer;
+      height: 75%;
+      border-radius: 0.3vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #dcceb8;
+      svg {
+        font-size: 2vw;
+      }
+    }
+  }
+  .ap-bottom-section {
+    width: 100%;
+    height: 88%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    // gap: 1vw;
+    .ap-bottom-left {
+      width: 60%;
+      height: 100%;
+      // border: 1px solid red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .bl-left {
+        width: 65%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .bl-left-img {
+          width: 100%;
+          height: 95%;
+          overflow: hidden;
+          border-radius: 1vw;
+          img {
+            width: 100%;
+            height: 100%;
+            transition: 0.3s ease-out;
+
+            object-fit: cover;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+      .bl-right {
+        width: 35%;
+        height: 95%;
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        flex-direction: column;
+        gap: 1vw;
+        // overflow-y: scroll;
+        .bl-right-img {
+          margin: auto 0px;
+          width: 90%;
+          height: 29%;
+          overflow: hidden;
+          border-radius: 0.5vw;
+          img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            transition: 0.2s ease-out;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+    .ap-bottom-right {
+      width: 35%;
+      height: 95%;
+      // margin: auto 0px;
+      .ap-form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        // gap: 1vw;
+        justify-content: space-between;
+        flex-direction: column;
+        .form-plot-number,
+        .plot-availability,
+        .plot-address {
+          width: 100%;
+          // border: 1px solid red;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-direction: column;
+          span {
+            font-size: 1.4vw;
+            font-weight: 500;
+          }
+          input {
+            width: 100%;
+            outline: none;
+            font-size: 1.2vw;
+            padding: 0.7vw 1vw;
+            border-radius: 0.4vw;
+            font-family: Inter;
+            border: 1px solid lightgray;
+          }
+        }
+        .plot-availability {
+          select {
+            width: 100%;
+            padding: 0.6vw 1vw;
+            font-size: 1.25vw;
+            font-family: Inter;
+            outline: none;
+            border-radius: 0.5vw;
+
+            border: 1px solid lightgray;
+            // option{
+            //    border: none;
+            //    border-radius: 1vw;
+            // }
+          }
+        }
+        .plot-address {
+          textarea {
+            width: 100%;
+            outline: none;
+            font-size: 1.2vw;
+            padding: 0.7vw 1vw;
+            border-radius: 0.4vw;
+            font-family: Inter;
+            border: 1px solid lightgray;
+          }
+        }
+        .plot-imgs {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          input {
+            background-color: #00b69b42;
+            border-radius: 0.5vw;
+          }
+          input[type="file"] {
+            padding: 0.8vw 0vw;
+            text-align: center;
+            padding-left: 1vw;
+          }
+        }
+        .save-plot-details {
+          width: 100%;
+          background-color: #00b69b;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.8vw 1vw;
+          font-size: 1.25vw;
+          border-radius: 0.5vw;
+          color: white;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

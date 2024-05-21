@@ -29,6 +29,8 @@ const addPlot = async (req, res) => {
   }
 };
 
-const allPlot = () => {};
+const getAllPlot = async(req, res) => {
+     
+};
 
-module.exports = { addPlot, allPlot };
+module.exports = { addPlot, getAllPlot };

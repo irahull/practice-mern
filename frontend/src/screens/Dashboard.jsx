@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./dashboard.scss";
 import { IoSearchOutline } from "react-icons/io5";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { LuClipboardCopy } from "react-icons/lu";
 import { MdOutlineFileDownload } from "react-icons/md";
+import AddPlot from "../components/AddPlot/AddPlot";
 
 const Dashboard = () => {
+  const [toggleAddPlot, setToggaleAddPlot] = useState(false);
   const data = [
     {
       id: 1,
@@ -38,8 +40,14 @@ const Dashboard = () => {
           <IoSearchOutline />
           <input type="text" name="" id="" />
         </div>
-        <div className="add-plot">Add Plot</div>
+        <div className="add-plot" onClick={()=> setToggaleAddPlot(!toggleAddPlot)}>Add Plot</div>
       </div>
+
+      {toggleAddPlot && (
+        <div className="addPlot-wrapper">
+          <AddPlot toggleAddPlot={toggleAddPlot} setToggaleAddPlot={setToggaleAddPlot} />
+        </div>
+      )}
 
       <div className="db-data-wrapper">
         <div className="data-heading">
@@ -61,9 +69,18 @@ const Dashboard = () => {
                 <div className="data-location">6096 Marjolaine Landing</div>
                 <div className="data-time">12.09.2019 - 12.53 PM</div>
                 <div className="data-status">
-                  <button style={{
-                    backgroundColor:item.id === 2 ? "#FCBE2D": item.id===3 ? "#FD5454":""
-                  }}>Available</button>
+                  <button
+                    style={{
+                      backgroundColor:
+                        item.id === 2
+                          ? "#FCBE2D"
+                          : item.id === 3
+                          ? "#FD5454"
+                          : "",
+                    }}
+                  >
+                    Available
+                  </button>
                 </div>
                 <div className="data-activity">
                   <div className="a-view">
