@@ -5,6 +5,7 @@ import AppLayout from "./layouts/AppLayout";
 import { useState } from "react";
 import Dashboard from "./screens/Dashboard";
 import Register from "./pages/Register/Register";
+import AddPlot from "./components/AddPlot/AddPlot";
 
 function App() {
   const [auth, setAuth] = useState(true);
@@ -26,6 +27,14 @@ function App() {
           path: "/",
           element: <Dashboard />,
         },
+        // {
+        //   path: "/add-plot",
+        //   element: <AddPlot />,
+        // },
+        // {
+        //   path: "/edit-plot",
+        //   element: <Dashboard />,
+        // },
       ],
     },
   ]);

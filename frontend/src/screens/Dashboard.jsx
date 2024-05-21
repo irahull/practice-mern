@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./dashboard.scss";
 import { IoSearchOutline } from "react-icons/io5";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
@@ -6,9 +6,11 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { LuClipboardCopy } from "react-icons/lu";
 import { MdOutlineFileDownload } from "react-icons/md";
 import AddPlot from "../components/AddPlot/AddPlot";
+import axios from "axios";
 
 const Dashboard = () => {
   const [toggleAddPlot, setToggaleAddPlot] = useState(false);
+  const [allData, setAllData] = useState([]);
   const data = [
     {
       id: 1,
@@ -32,6 +34,21 @@ const Dashboard = () => {
       id: 7,
     },
   ];
+
+  const getAllData = async () => {
+    try {
+      const resp = await axios.get("http://localhost:5000/api/plot/getAllPlot");
+      console.log(resp.data);
+      setAllData(resp.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllData();
+  }, [allData]);
+
   return (
     <div className="dashboard-container">
       <h2 className="h2">Dashboard</h2>
@@ -40,12 +57,20 @@ const Dashboard = () => {
           <IoSearchOutline />
           <input type="text" name="" id="" />
         </div>
-        <div className="add-plot" onClick={()=> setToggaleAddPlot(!toggleAddPlot)}>Add Plot</div>
+        <div
+          className="add-plot"
+          onClick={() => setToggaleAddPlot(!toggleAddPlot)}
+        >
+          Add Plot
+        </div>
       </div>
 
       {toggleAddPlot && (
         <div className="addPlot-wrapper">
-          <AddPlot toggleAddPlot={toggleAddPlot} setToggaleAddPlot={setToggaleAddPlot} />
+          <AddPlot
+            toggleAddPlot={toggleAddPlot}
+            setToggaleAddPlot={setToggaleAddPlot}
+          />
         </div>
       )}
 
@@ -59,27 +84,27 @@ const Dashboard = () => {
         </div>
 
         <div className="db-datas">
-          {data.map((item) => {
+          {allData.map((item) => {
             return (
               <div className="db-data">
                 <div className="data-number">
                   <input type="checkbox" />
-                  <p>Plot_01</p>
+                  <p>{item.plotNumber}</p>
                 </div>
-                <div className="data-location">6096 Marjolaine Landing</div>
+                <div className="data-location">{item.location}</div>
                 <div className="data-time">12.09.2019 - 12.53 PM</div>
                 <div className="data-status">
                   <button
                     style={{
                       backgroundColor:
-                        item.id === 2
+                        item.availability === "pending"
                           ? "#FCBE2D"
-                          : item.id === 3
+                          : item.availability=== "sold"
                           ? "#FD5454"
                           : "",
                     }}
                   >
-                    Available
+                   {item.availability}
                   </button>
                 </div>
                 <div className="data-activity">

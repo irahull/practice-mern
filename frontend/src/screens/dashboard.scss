@@ -149,9 +149,11 @@
           text-align: center;
           width: 15%;
           button {
+            width: 50%;
             padding: 0.3vw 1vw;
             border: none;
             color: white;
+            text-transform: capitalize;
             font-family: "Nunito Sans", sans-serif;
 
             font-size: 1.1vw;
