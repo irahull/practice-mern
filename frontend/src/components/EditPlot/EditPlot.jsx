@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./addPlot.scss";
+import "./editPlot.scss";
 import axios from "axios";
 import { RxCross2 } from "react-icons/rx";
 import ApLMain from "../../imgs/ap-left-main.png";
@@ -8,7 +8,7 @@ import ApRight2 from "../../imgs/ap-right2.png";
 import ApRight3 from "../../imgs/ap-right3.png";
 import ApLogo from "../../imgs/wallfort-logo.png";
 
-const AddPlot = ({ toggleAddPlot, setToggaleAddPlot }) => {
+const EditPlot = ({ toggleeditPlot, setToggaleeditPlot }) => {
   const [plotData, setPlotData] = useState({
     plotNumber: "",
     availability: "available",
@@ -25,7 +25,7 @@ const AddPlot = ({ toggleAddPlot, setToggaleAddPlot }) => {
   };
 
   const submitPlotDetails = async () => {
-    const res = await axios.post("http://localhost:5000/api/plot/addPlot", {
+    const res = await axios.post("http://localhost:5000/api/plot/editPlot", {
       plotNumber: plotData.plotNumber,
       availability: plotData.availability,
       location: plotData.location,
@@ -40,7 +40,7 @@ const AddPlot = ({ toggleAddPlot, setToggaleAddPlot }) => {
   console.log(plotData);
 
   return (
-    <div className="addPlot-main">
+    <div className="editPlot-main">
       <div className="ap-upper-section">
         <div className="plot-number">
           <img src={ApLogo} alt="" />
@@ -48,7 +48,7 @@ const AddPlot = ({ toggleAddPlot, setToggaleAddPlot }) => {
         </div>
         <div
           className="ap-close"
-          onClick={() => setToggaleAddPlot(!toggleAddPlot)}
+          onClick={() => setToggaleeditPlot(!toggleeditPlot)}
         >
           <RxCross2 />
         </div>
@@ -120,4 +120,4 @@ const AddPlot = ({ toggleAddPlot, setToggaleAddPlot }) => {
   );
 };
 
-export default AddPlot;
+export default EditPlot;

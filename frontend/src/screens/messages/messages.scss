@@ -1,0 +1,176 @@
+.message-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    .h2 {
+      font-size: 1.8vw;
+      color: #292c2e;
+      text-align: left;
+    }
+    .message-section {
+      width: 100%;
+      height: 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      .m-search {
+        width: 25%;
+        height: 100%;
+        border-radius: 9999px;
+        border: 1px solid #d5d5d5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        margin-top: 0.5vw;
+        background-color: #f5f6fa;
+        svg {
+          font-size: 1vw;
+        }
+        input {
+          height: 90%;
+          width: 90%;
+          padding: 0vw 1vw;
+          outline: none;
+          border: none;
+          font-size: 1.1vw;
+          font-family: "Nunito Sans", sans-serif;
+          background-color: transparent;
+        }
+      }}
+ 
+    .message-data-wrapper {
+      position: relative;
+      width: 100%;
+      margin-top: 1vw;
+      // border: 1px solid red;
+      height: 85%;
+      // overflow-y: scroll;
+      .message-heading {
+        // position: sticky;
+        // top: 0;
+        border-radius: 999vw;
+        width: 100%;
+        padding: 1vw 0vw;
+        background-color: #f1f4f9;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .sender-name,
+        .sender-email,
+        .sender-phone,
+        .sender-message,
+        .sender-status,
+        .sender-activity {
+          font-size: 1.2vw;
+          font-weight: 600;
+          // border: 1px solid red;
+        }
+        .sender-name {
+          width: 10%;
+          padding-left: 2vw;
+        }
+        .sender-email {
+          width: 18%;
+          text-align: center;
+        }
+        .sender-phone {
+          text-align: center;
+          width: 15%;
+        }
+        .sender-message {
+          text-align: center;
+          width: 22%;
+        }
+        .sender-status {
+          text-align: center;
+          width: 10%;
+        }
+        .sender-activity {
+          text-align: center;
+          width: 22%;
+        }
+      }
+      .message-datas {
+        width: 100%;
+        height: 100%;
+        .message-data {
+          width: 100%;
+          height: 14%;
+          border-bottom: 1px solid rgba(211, 211, 211, 0.384);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .data-name {
+            width: 10%;
+            display: flex;
+            align-items: center;
+            font-size: 1.2vw;
+            // border: 1px solid red;
+            justify-content: space-between;
+          }
+          .data-email {
+            width: 18%;
+            // border: 1px solid rgb(119, 82, 82);
+            text-align: center;
+            font-size: 1.2vw;
+          }
+          .data-phone {
+            text-align: center;
+            width: 15%;
+            font-size: 1.2vw;
+          }
+          .data-message {
+            text-align: center;
+            width: 22%;
+            font-size: 1.2vw;
+          }
+          .data-status {
+            text-align: center;
+            width: 10%;
+            button {
+              width: 80%;
+              padding: 0.3vw 1vw;
+              border: none;
+              color: white;
+              text-transform: capitalize;
+              font-family: "Nunito Sans", sans-serif;
+  
+              font-size: 1.1vw;
+              background-color: #00817f;
+              border-radius: 999vw;
+            }
+          }
+          .message-activity {
+            text-align: center;
+            width: 22%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5vw;
+            .a-view, .a-delete, .a-copy, .a-download{
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 0.2vw;
+              cursor: pointer;
+              svg{
+                font-size: 1.2vw;
+                line-height: 1;
+              }
+              span{
+                font-size: 1.1vw;
+              }
+            }
+          }
+        }
+      }
+    }
+  
+  }
+  

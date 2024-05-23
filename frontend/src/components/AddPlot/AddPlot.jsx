@@ -15,6 +15,22 @@ const AddPlot = ({ toggleAddPlot, setToggaleAddPlot }) => {
     location: "",
   });
 
+  const data = [
+
+    {
+      id: 1,
+      img:ApRight1
+    },
+    {
+      id: 2,
+      img:ApRight2
+    },
+    {
+      id:34,
+      img:ApRight3
+    },
+  ];
+
   const handleInput = (e) => {
     const { name, value } = e.target;
 
@@ -61,15 +77,20 @@ const AddPlot = ({ toggleAddPlot, setToggaleAddPlot }) => {
             </div>
           </div>
           <div className="bl-right">
-            <div className="bl-right-img">
-              <img src={ApRight1} alt="" />
-            </div>
-            <div className="bl-right-img">
+            {
+              data.map((item)=>{
+                return  <div className="bl-right-img" key={item.idy}>
+                <img src={item.img} alt="" />
+              </div>
+              })
+            }
+           
+            {/* <div className="bl-right-img">
               <img src={ApRight2} alt="" />
             </div>
             <div className="bl-right-img">
               <img src={ApRight3} alt="" />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="ap-bottom-right">

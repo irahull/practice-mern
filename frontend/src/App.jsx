@@ -6,6 +6,8 @@ import { useState } from "react";
 import Dashboard from "./screens/Dashboard";
 import Register from "./pages/Register/Register";
 import AddPlot from "./components/AddPlot/AddPlot";
+import Messages from "./screens/messages/Messages";
+import EditPlot from "./components/EditPlot/EditPlot";
 
 function App() {
   const [auth, setAuth] = useState(true);
@@ -21,16 +23,20 @@ function App() {
     },
 
     {
-      element: auth ? <AppLayout /> : <Login />,
+      element: <AppLayout /> ,
       children: [
         {
           path: "/",
           element: <Dashboard />,
         },
-        // {
-        //   path: "/add-plot",
-        //   element: <AddPlot />,
-        // },
+        {
+          path: "/messages",
+          element: <Messages/>,
+        },
+        {
+          path: "/edit-plot",
+          element: <EditPlot/>,
+        },
         // {
         //   path: "/edit-plot",
         //   element: <Dashboard />,

@@ -93,10 +93,11 @@
         flex-direction: column;
         gap: 1vw;
         // overflow-y: scroll;
+        // overflow: hidden;
         .bl-right-img {
           margin: auto 0px;
           width: 90%;
-          height: 29%;
+          min-height: 29%;
           overflow: hidden;
           border-radius: 0.5vw;
           img {
