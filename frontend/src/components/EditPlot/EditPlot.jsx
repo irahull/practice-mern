@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./editPlot.scss";
 import axios from "axios";
 import { RxCross2 } from "react-icons/rx";
@@ -7,13 +7,16 @@ import ApRight1 from "../../imgs/ap-right1.png";
 import ApRight2 from "../../imgs/ap-right2.png";
 import ApRight3 from "../../imgs/ap-right3.png";
 import ApLogo from "../../imgs/wallfort-logo.png";
+import { useParams } from "react-router-dom";
 
-const EditPlot = ({ toggleeditPlot, setToggaleeditPlot }) => {
+const EditPlot = () => {
   const [plotData, setPlotData] = useState({
     plotNumber: "",
     availability: "available",
     location: "",
   });
+
+  const { id } = useParams()
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -24,7 +27,21 @@ const EditPlot = ({ toggleeditPlot, setToggaleeditPlot }) => {
     });
   };
 
-  const submitPlotDetails = async () => {
+  const getSinglePlotData = async () => {
+    try {
+      const resp = await axios.get(`http://localhost:5000/api/plot/${id}`);
+      console.log(resp.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getSinglePlotData()
+  }, []);
+
+
+  const submitEditPlotDetails = async () => {
     const res = await axios.post("http://localhost:5000/api/plot/editPlot", {
       plotNumber: plotData.plotNumber,
       availability: plotData.availability,
@@ -37,24 +54,23 @@ const EditPlot = ({ toggleeditPlot, setToggaleeditPlot }) => {
     return res;
   };
 
-  console.log(plotData);
 
   return (
     <div className="editPlot-main">
-      <div className="ap-upper-section">
-        <div className="plot-number">
+      <div className="ed-upper-section">
+        <div className="ed-plot-number">
           <img src={ApLogo} alt="" />
           <h4>Plot no. 1</h4>
         </div>
         <div
           className="ap-close"
-          onClick={() => setToggaleeditPlot(!toggleeditPlot)}
+        // onClick={() => setToggaleeditPlot(!toggleeditPlot)}
         >
           <RxCross2 />
         </div>
       </div>
-      <div className="ap-bottom-section">
-        <div className="ap-bottom-left">
+      <div className="ed-bottom-section">
+        <div className="ed-bottom-left">
           <div className="bl-left">
             <div className="bl-left-img">
               <img src={ApLMain} alt="" />
@@ -72,8 +88,8 @@ const EditPlot = ({ toggleeditPlot, setToggaleeditPlot }) => {
             </div>
           </div>
         </div>
-        <div className="ap-bottom-right">
-          <div className="ap-form">
+        <div className="ed-bottom-right">
+          <div className="ed-form">
             <div className="form-plot-number">
               <span>Plot Number</span>
               <input
@@ -110,7 +126,7 @@ const EditPlot = ({ toggleeditPlot, setToggaleeditPlot }) => {
               <input type="file" placeholder="File"  />
             </div> */}
 
-            <div className="save-plot-details" onClick={submitPlotDetails}>
+            <div className="save-edit-plot-details" onClick={submitEditPlotDetails}>
               Save
             </div>
           </div>

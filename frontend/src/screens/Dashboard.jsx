@@ -7,34 +7,35 @@ import { LuClipboardCopy } from "react-icons/lu";
 import { MdOutlineFileDownload } from "react-icons/md";
 import AddPlot from "../components/AddPlot/AddPlot";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [toggleAddPlot, setToggaleAddPlot] = useState(false);
   const [allData, setAllData] = useState([]);
   const [editId, setEditId] = useState();
-  const data = [
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    },
-    {
-      id: 5,
-    },
-    {
-      id: 6,
-    },
-    {
-      id: 7,
-    },
-  ];
+  // const data = [
+  //   {
+  //     id: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //   },
+  //   {
+  //     id: 3,
+  //   },
+  //   {
+  //     id: 4,
+  //   },
+  //   {
+  //     id: 5,
+  //   },
+  //   {
+  //     id: 6,
+  //   },
+  //   {
+  //     id: 7,
+  //   },
+  // ];
 
   const getAllData = async () => {
     try {
@@ -103,8 +104,8 @@ const Dashboard = () => {
                         item.availability === "pending"
                           ? "#FCBE2D"
                           : item.availability === "sold"
-                          ? "#FD5454"
-                          : "",
+                            ? "#FD5454"
+                            : "",
                     }}
                   >
                     {item.availability}
@@ -121,7 +122,7 @@ const Dashboard = () => {
                   </div>
                   <div className="a-copy">
                     <LuClipboardCopy />
-                    <span onClick={() => setEditId(item._id)}>Update</span>
+                    <Link to={`/edit-plot/${item._id}`}>Update</Link>
                   </div>
                   <div className="a-download">
                     <MdOutlineFileDownload />
