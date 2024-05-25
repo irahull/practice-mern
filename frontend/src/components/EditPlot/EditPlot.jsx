@@ -10,10 +10,11 @@ import ApLogo from "../../imgs/wallfort-logo.png";
 import { useParams } from "react-router-dom";
 
 const EditPlot = () => {
-  const [plotData, setPlotData] = useState({
+  const [singlePlotData, setSinglePlotData] = useState({
     plotNumber: "",
     availability: "available",
     location: "",
+
   });
 
   const { id } = useParams()
@@ -21,16 +22,19 @@ const EditPlot = () => {
   const handleInput = (e) => {
     const { name, value } = e.target;
 
-    setPlotData({
-      ...plotData,
+    setSinglePlotData({
+      ...singlePlotData,
       [name]: value,
     });
   };
 
+  console.log(singlePlotData)
+
   const getSinglePlotData = async () => {
     try {
-      const resp = await axios.get(`http://localhost:5000/api/plot/${id}`);
+      const resp = await axios.get(`http://localhost:5000/api/plot/editPlot/${id}`);
       console.log(resp.data);
+      setSinglePlotData(resp.data[0])
     } catch (error) {
       console.log(error);
     }
@@ -42,14 +46,14 @@ const EditPlot = () => {
 
 
   const submitEditPlotDetails = async () => {
-    const res = await axios.post("http://localhost:5000/api/plot/editPlot", {
-      plotNumber: plotData.plotNumber,
-      availability: plotData.availability,
-      location: plotData.location,
+    const res = await axios.post(`http://localhost:5000/api/plot/editSinglePlot/${id}`, {
+      plotNumber: singlePlotData.plotNumber,
+      availability: singlePlotData.availability,
+      location: singlePlotData.location,
     });
     if (res.data.success === true) {
       alert("Plot added successfully");
-      setPlotData({ plotNumber: "", availability: "", location: "" });
+      setSinglePlotData({ plotNumber: "", availability: "", location: "" });
     }
     return res;
   };
@@ -96,7 +100,7 @@ const EditPlot = () => {
                 type="text"
                 placeholder="Plot 44"
                 name="plotNumber"
-                value={plotData.plotNumber}
+                value={singlePlotData.plotNumber}
                 onChange={handleInput}
               />
             </div>
@@ -105,7 +109,7 @@ const EditPlot = () => {
               <select
                 name="availability"
                 id="cars"
-                value={plotData.availability}
+                value={singlePlotData.availability}
                 onChange={handleInput}
               >
                 <option value="available">Available</option>
@@ -118,7 +122,7 @@ const EditPlot = () => {
               <textarea
                 name="location"
                 id=""
-                value={plotData.location}
+                value={singlePlotData.location}
                 onChange={handleInput}
               ></textarea>
             </div>

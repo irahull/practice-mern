@@ -39,12 +39,33 @@ const getAllPlot = async (req, res) => {
 };
 
 const editPlot = async (req, res) => {
+  const id = req.params.id;
   try {
-    const allPlot = await plotDetails.find({});
-    res.status(200).json(allPlot);
+    const singlePlot = await plotDetails.findById(id);
+    res.status(200).json(singlePlot);
   } catch (error) {
     console.log(error);
   }
 };
 
-module.exports = { addPlot, getAllPlot, editPlot};
+// const editSinglePlot = async (req, res) => {
+//   const id = req.params.id;
+//   const { plotNumber, availability, location } = req.body;
+
+//   try {
+//     // const resp = await plotDetails.updateOne({ _id: id }, plotNumber, availability, location);
+//     // if (resp) {
+//     //   res.status(201).json({
+//     //     success: true,
+//     //     msg: "Plot Updated Successfully",
+//     //   });
+//     // }
+
+
+//   } catch (error) {
+//     console.log("error while updating plot details", error)
+//   }
+
+// }
+
+module.exports = { addPlot, getAllPlot, editPlot };
