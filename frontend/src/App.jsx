@@ -34,7 +34,7 @@ function App() {
           element: <Messages/>,
         },
         {
-          path: "/edit-plot",
+          path: "/edit-plot/:id",
           element: <EditPlot/>,
         },
         // {

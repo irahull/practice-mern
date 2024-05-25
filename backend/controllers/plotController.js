@@ -38,4 +38,13 @@ const getAllPlot = async (req, res) => {
   }
 };
 
-module.exports = { addPlot, getAllPlot };
+const editPlot = async (req, res) => {
+  try {
+    const allPlot = await plotDetails.find({});
+    res.status(200).json(allPlot);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { addPlot, getAllPlot, editPlot};

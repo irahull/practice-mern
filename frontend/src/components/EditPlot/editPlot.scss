@@ -6,14 +6,14 @@
   padding: 1vw;
   padding: 1vw;
   border-radius: 1vw;
-  .ap-upper-section {
+  .ed-upper-section {
     width: 100%;
     height: 12%;
     // border: 1px solid red;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .plot-number {
+    .ed-plot-number {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -47,7 +47,7 @@
       }
     }
   }
-  .ap-bottom-section {
+  .ed-bottom-section {
     width: 100%;
     height: 88%;
     display: flex;
@@ -55,7 +55,7 @@
     justify-content: space-evenly;
 
     // gap: 1vw;
-    .ap-bottom-left {
+    .ed-bottom-left {
       width: 60%;
       height: 100%;
       // border: 1px solid red;
@@ -113,11 +113,11 @@
         }
       }
     }
-    .ap-bottom-right {
+    .ed-bottom-right {
       width: 35%;
       height: 95%;
       // margin: auto 0px;
-      .ap-form {
+      .ed-form {
         width: 100%;
         height: 100%;
         display: flex;
@@ -190,7 +190,7 @@
             padding-left: 1vw;
           }
         }
-        .save-plot-details {
+        .save-edit-plot-details {
           width: 100%;
           background-color: #00b69b;
           display: flex;
