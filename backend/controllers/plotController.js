@@ -41,31 +41,34 @@ const getAllPlot = async (req, res) => {
 const editPlot = async (req, res) => {
   const id = req.params.id;
   try {
-    const singlePlot = await plotDetails.findById(id);
+    const singlePlot = await plotDetails.find({ _id: id });
     res.status(200).json(singlePlot);
   } catch (error) {
     console.log(error);
   }
 };
 
-// const editSinglePlot = async (req, res) => {
-//   const id = req.params.id;
-//   const { plotNumber, availability, location } = req.body;
+const editSinglePlot = async (req, res) => {
+  const id = req.params.id;
+  const { singlePlotData } = req.body;
 
-//   try {
-//     // const resp = await plotDetails.updateOne({ _id: id }, plotNumber, availability, location);
-//     // if (resp) {
-//     //   res.status(201).json({
-//     //     success: true,
-//     //     msg: "Plot Updated Successfully",
-//     //   });
-//     // }
+  const editDetails = new plotDetails(singlePlotData);
+
+  try {
+    const resp = await plotDetails.updateOne({ id }, editDetails);
+    console.log(resp)
+    // if (resp) {
+    //   res.status(201).json({
+    //     success: true,
+    //     msg: "Plot Updated Successfully",
+    //   });
+    // }
 
 
-//   } catch (error) {
-//     console.log("error while updating plot details", error)
-//   }
+  } catch (error) {
+    console.log("error while updating plot details", error)
+  }
 
-// }
+}
 
-module.exports = { addPlot, getAllPlot, editPlot };
+module.exports = { addPlot, getAllPlot, editPlot, editSinglePlot };

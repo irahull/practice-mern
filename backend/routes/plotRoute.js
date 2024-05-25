@@ -3,7 +3,7 @@ const { addPlot, getAllPlot, editPlot , editSinglePlot} = require("../controller
 const router = require("express").Router();
 
 router.route("/addPlot").post(addPlot)
-// router.route("/editSinglePlot/:id").post(editSinglePlot)
+router.route("/editSinglePlot/:id").post(editSinglePlot)
 router.route("/editPlot/:id").get(editPlot)
 router.route("/getAllPlot").get(getAllPlot)
 

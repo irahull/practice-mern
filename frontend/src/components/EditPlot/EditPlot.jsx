@@ -47,9 +47,7 @@ const EditPlot = () => {
 
   const submitEditPlotDetails = async () => {
     const res = await axios.post(`http://localhost:5000/api/plot/editSinglePlot/${id}`, {
-      plotNumber: singlePlotData.plotNumber,
-      availability: singlePlotData.availability,
-      location: singlePlotData.location,
+      singlePlotData
     });
     if (res.data.success === true) {
       alert("Plot added successfully");
