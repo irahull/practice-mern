@@ -108,10 +108,7 @@ const Messages = () => {
                     <span>Delete</span>
                   </div>
                  
-                  <div className="a-download">
-                    <MdOutlineFileDownload />
-                    <span>Download</span>
-                  </div>
+               
                 </div>
               </div>
             );
