@@ -55,14 +55,20 @@ const editSinglePlot = async (req, res) => {
   const editDetails = new plotDetails(singlePlotData);
 
   try {
-    const resp = await plotDetails.updateOne({ id }, editDetails);
+    const resp = await plotDetails.updateOne({ _id: id }, editDetails);
     console.log(resp)
-    // if (resp) {
-    //   res.status(201).json({
-    //     success: true,
-    //     msg: "Plot Updated Successfully",
-    //   });
-    // }
+    if (resp.acknowledged === true) {
+      res.status(201).json({
+        success: true,
+        msg: "Plot Updated Successfully",
+      });
+    }
+    else {
+      res.status(409).json({
+        success: false,
+        msg: "Id not found",
+      });
+    }
 
 
   } catch (error) {
@@ -71,4 +77,16 @@ const editSinglePlot = async (req, res) => {
 
 }
 
-module.exports = { addPlot, getAllPlot, editPlot, editSinglePlot };
+const deletePlot = async (req, res) => {
+  const { id } = req.params.id
+  try {
+    const resp = await plotDetails.deleteOne({ _id: id })
+    res.status(200).json({ success: true, data: resp })
+    return resp
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+module.exports = { addPlot, getAllPlot, editPlot, editSinglePlot, deletePlot };

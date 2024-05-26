@@ -8,7 +8,7 @@ import ApRight2 from "../../imgs/ap-right2.png";
 import ApRight3 from "../../imgs/ap-right3.png";
 import ApLogo from "../../imgs/wallfort-logo.png";
 
-const AddPlot = ({ toggleAddPlot, setToggaleAddPlot }) => {
+const AddPlot = ({ toggleAddPlot, setToggaleAddPlot, getAllData }) => {
   const [plotData, setPlotData] = useState({
     plotNumber: "",
     availability: "available",
@@ -49,6 +49,8 @@ const AddPlot = ({ toggleAddPlot, setToggaleAddPlot }) => {
     if (res.data.success === true) {
       alert("Plot added successfully");
       setPlotData({ plotNumber: "", availability: "", location: "" });
+      setToggaleAddPlot(!toggleAddPlot)
+      getAllData()
     }
     return res;
   };

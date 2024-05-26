@@ -12,30 +12,6 @@ import { Link } from "react-router-dom";
 const Dashboard = () => {
   const [toggleAddPlot, setToggaleAddPlot] = useState(false);
   const [allData, setAllData] = useState([]);
-  const [editId, setEditId] = useState();
-  // const data = [
-  //   {
-  //     id: 1,
-  //   },
-  //   {
-  //     id: 2,
-  //   },
-  //   {
-  //     id: 3,
-  //   },
-  //   {
-  //     id: 4,
-  //   },
-  //   {
-  //     id: 5,
-  //   },
-  //   {
-  //     id: 6,
-  //   },
-  //   {
-  //     id: 7,
-  //   },
-  // ];
 
   const getAllData = async () => {
     try {
@@ -46,12 +22,21 @@ const Dashboard = () => {
       console.log(error);
     }
   };
+ 
+  const deletePlot = async (id) => {
+    try {
+
+      return await axios.delete(`http://localhost:5000/api/plot/deletePlot/:${id}`)
+      // console.log(resp)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
     getAllData();
   }, []);
-
-  console.log(editId);
 
   return (
     <div className="dashboard-container">
@@ -74,6 +59,7 @@ const Dashboard = () => {
           <AddPlot
             toggleAddPlot={toggleAddPlot}
             setToggaleAddPlot={setToggaleAddPlot}
+            getAllData={getAllData}
           />
         </div>
       )}
@@ -118,7 +104,7 @@ const Dashboard = () => {
                   </div>
                   <div className="a-delete">
                     <RiDeleteBinLine />
-                    <span>Delete</span>
+                    <span onClick={() => deletePlot(item._id)}>Delete</span>
                   </div>
                   <div className="a-copy">
                     <LuClipboardCopy />
