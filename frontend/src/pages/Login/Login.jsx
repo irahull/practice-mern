@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import "./login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useContextValue } from "../../Contexts/AppContext";
 
-const Login = ({ setAuth }) => {
+const Login = () => {
   const [loginData, setLoginData] = useState({
     name: "",
     email: "",
   });
   const navigate = useNavigate();
+
+  const storeToken  = useContextValue()
+
   const handleInput = (e) => {
     const { name, value } = e.target;
     setLoginData({
@@ -26,7 +30,10 @@ const Login = ({ setAuth }) => {
 
       if (resp.data.success === true) {
         alert("Login Successfull");
+
+        console.log(resp.data.token)
         // setAuth(true);
+        storeToken(resp.data.token)
         navigate("/")
       }
       return resp;

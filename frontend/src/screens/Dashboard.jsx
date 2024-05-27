@@ -76,7 +76,7 @@ const Dashboard = () => {
         <div className="db-datas">
           {allData.map((item) => {
             return (
-              <div className="db-data">
+              <div className="db-data" key={item._id}>
                 <div className="data-number">
                   <input type="checkbox" />
                   <p>{item.plotNumber}</p>

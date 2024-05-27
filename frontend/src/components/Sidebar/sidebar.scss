@@ -6,12 +6,13 @@
   justify-content: flex-start;
   gap: 2vw;
   flex-direction: column;
- 
+
   .sb-logo {
     width: 50%;
     cursor: pointer;
   }
   .sb-dashboard {
+    position: relative;
     svg {
       font-size: 2.2vw;
       color: gray;
@@ -19,20 +20,62 @@
       transition: 0.2 ease-out;
       cursor: pointer;
     }
+    &:hover {
+      transition: 0.5s ease-out;
+      &::after {
+        content: "Dashboard";
+        background-color: aquamarine;
+        padding: 0.2vw 0.5vw;
+        z-index: 2;
+        top: 50%;
+        border-radius: 0.2vw;
+        position: absolute;
+        transition: 0.5s ease-out;
+      }
+    }
   }
   .sb-message {
+    position: relative;
+    transition: 0.5s ease-out;
     svg {
       font-size: 2.2vw;
       color: gray;
       cursor: pointer;
-      transition: 0.2 ease-out;
+      transition: 0.2s ease-out;
+    }
+    &:hover {
+      transition: 0.5s ease-out;
+      &::after {
+        content: "Message";
+        background-color: aquamarine;
+        padding: 0.2vw 0.5vw;
+        z-index: 2;
+        top: 50%;
+        border-radius: 0.2vw;
+        position: absolute;
+        transition: 0.5s ease-out;
+      }
     }
   }
   .sb-logout {
+    position: relative;
     svg {
       font-size: 2.2vw;
       color: gray;
       cursor: pointer;
+    }
+    &:hover {
+      transition: 0.5s ease-out;
+      &::after {
+        content: "Logout";
+        background-color: aquamarine;
+        padding: 0.2vw 0.5vw;
+        z-index: 2;
+        top: 50%;
+        border-radius: 0.2vw;
+        position: absolute;
+        transition: 0.5s ease-out;
+      }
     }
   }
 }
